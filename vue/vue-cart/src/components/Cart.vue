@@ -4,12 +4,16 @@
     <h3>{{name}}</h3>
     <table border='1'>
         <tr>
+            <th>#</th>
             <th>课程名</th>
             <th>单价</th>
             <th>数量</th>
             <th>价格</th>
         </tr>
-        <tr v-for='(c,i) in cart' :key='c.id'>
+        <tr v-for='(c,i) in cart' :key='c.id' :class='{active:c.active}'>
+            <td>
+                <input type="checkbox" v-model='c.active'>
+            </td>
             <td>{{c.text}}</td>
             <td>￥{{c.pic}}</td>
             <td>
@@ -50,4 +54,7 @@ export default {
 </script>
 
 <style>
+.active{
+    background-color:yellow;
+}
 </style>
