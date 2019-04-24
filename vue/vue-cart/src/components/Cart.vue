@@ -23,6 +23,11 @@
                 </td>
             <td>￥{{c.pic*c.count}}</td>
         </tr>
+        <tr>
+            <td></td>
+            <td colspan='2'>{{activeCount}}/{{count}}</td>
+            <td colspan='2'>{{total}}</td>
+        </tr>
     </table>
 </div>
     
@@ -30,7 +35,29 @@
 
 <script>
 export default {
-  props: ["name", "cart"],
+  props: ["name"],
+  data(){
+      return {
+          cart:[]
+      }
+  },
+  created(){//组件创建完成执行一次，仅一次
+    //接收父组件的信息   参数1  事件名  参数2   具体参数
+    this.$bus.$on('addCart',(goods)=>{
+        const ret = this.cart.find((value)=>{
+        return value.id===goods.id
+      });
+      if(ret){
+        ret.count+=1
+      }else{
+        this.cart.push({
+          ...goods,
+          count:1,
+          active:true
+        })
+      }
+    })
+  },
   methods:{
       minus(i){
           const count = this.cart[i].count;
@@ -49,7 +76,26 @@ export default {
               this.cart.splice(i,1);
           }
       }
-  }
+  },
+  computed: {
+      activeCount() {
+          return this.cart.filter((value)=>{
+              return value.active
+          }).length
+      },
+      count(){
+          return this.cart.length
+      },
+      total(){
+          let num = 0;
+          this.cart.forEach((e) => {
+              if(e.active){
+                  num+=e.pic*e.count
+              }
+          });
+          return num
+      }
+  },
 };
 </script>
 

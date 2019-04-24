@@ -10,7 +10,7 @@
       </ul>
     </div>
     <div>
-      <cart :name='name' :cart='cart'></cart>
+      <cart :name='name'></cart>
     </div>
   </div>
 </template>
@@ -27,7 +27,6 @@ export default {
   data(){
     return {
       name:'开课吧购物车',
-      cart:[],
       goodsList:[
         {
           id:1,
@@ -45,18 +44,8 @@ export default {
   methods:{
     addGood(i){
       const goods = this.goodsList[i];
-      const ret = this.cart.find((value)=>{
-        return value.id===goods.id
-      });
-      if(ret){
-        ret.count+=1
-      }else{
-        this.cart.push({
-          ...goods,
-          count:1,
-          acticve:true
-        })
-      }
+      //派发事件   参数1  事件名称  参数2 具体参数
+      this.$bus.$emit('addCart',goods);
     }
   }
 }
