@@ -1,0 +1,25 @@
+module.exports = {
+    configureWebpack:{
+        devServer:{
+            before(app){
+                app.get('/api/goods',function(req,res){
+                    res.json({
+                        code:0,
+                        data:[
+                            {
+                            id:1,
+                            text:'商品1',
+                            pic:100
+                          },
+                          {
+                            id:2,
+                            text:'商品2',
+                            pic:600
+                          }
+                        ]
+                    })
+                })
+            }
+        }
+    }
+}

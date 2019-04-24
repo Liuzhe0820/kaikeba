@@ -18,7 +18,7 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import Cart from './components/Cart.vue'
-
+import axios from "axios";
 export default {
   name: 'app',
   components: {
@@ -28,18 +28,15 @@ export default {
     return {
       name:'开课吧购物车',
       goodsList:[
-        {
-          id:1,
-          text:'商品1',
-          pic:100
-        },
-        {
-          id:2,
-          text:'商品2',
-          pic:600
-        }
+        
       ]
     }
+  },
+  async created(){
+    //查询产品列表
+    const ret = await axios.get('/api/goods');
+    console.log(ret);
+    this.goodsList = ret.data.data;
   },
   methods:{
     addGood(i){
