@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <el-button>按钮</el-button>
     <div>
       <ul>
         <li v-for='(goods,index) in goodsList' :key='goods.id'>
@@ -17,32 +18,30 @@
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import Cart from './components/Cart.vue'
+import Cart from "./components/Cart.vue";
 import axios from "axios";
 export default {
-  name: 'app',
+  name: "app",
   components: {
     Cart
   },
-  data(){
+  data() {
     return {
-      name:'开课吧购物车',
-      goodsList:[
-        
-      ]
-    }
+      name: "开课吧购物车",
+      goodsList: []
+    };
   },
-  async created(){
+  async created() {
     //查询产品列表
-    const ret = await axios.get('/api/goods');
-    console.log(ret);
-    this.goodsList = ret.data.data;
-  },
-  methods:{
+      const ret = await axios.get("/api/goods");
+      this.goodsList = ret.data.data;
+      
+  },  
+  methods: {
     addGood(i){
       const goods = this.goodsList[i];
       //派发事件   参数1  事件名称  参数2 具体参数
-      this.$bus.$emit('addCart',goods);
+      this.$bus.$emit("addCart", goods);
     }
   }
 }
@@ -50,7 +49,7 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

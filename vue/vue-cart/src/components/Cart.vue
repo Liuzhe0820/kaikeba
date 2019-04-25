@@ -41,7 +41,18 @@ export default {
           cart:[]
       }
   },
+  watch:{
+    cart:{//cart 数据发生变化时  执行下面的方法
+        handler(newData,oldData){
+            localStorage.setItem('cart',JSON.stringify(newData));
+        },
+        deep:true
+
+    }
+  },
   created(){//组件创建完成执行一次，仅一次
+    localStorage.setItem('cart',JSON.stringify(this.cart));
+    console.log(localStorage.getItem('cart'));
     //接收父组件的信息   参数1  事件名  参数2   具体参数
     this.$bus.$on('addCart',(goods)=>{
         const ret = this.cart.find((value)=>{
