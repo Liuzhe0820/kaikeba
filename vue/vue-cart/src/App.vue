@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <el-button>按钮</el-button>
+    <form-test></form-test>
+    <btn @lalala='lalalaClick'></btn>
     <div>
       <ul>
         <li v-for='(goods,index) in goodsList' :key='goods.id'>
@@ -20,10 +21,14 @@
 // import HelloWorld from './components/HelloWorld.vue'
 import Cart from "./components/Cart.vue";
 import axios from "axios";
+import FormTest from './components/FormTest.vue';
+import Btn from './components/Btn.vue';
 export default {
   name: "app",
   components: {
-    Cart
+    Cart,
+    FormTest,
+    Btn
   },
   data() {
     return {
@@ -42,6 +47,9 @@ export default {
       const goods = this.goodsList[i];
       //派发事件   参数1  事件名称  参数2 具体参数
       this.$bus.$emit("addCart", goods);
+    },
+    lalalaClick(obj){
+      console.log(obj)
     }
   }
 }
