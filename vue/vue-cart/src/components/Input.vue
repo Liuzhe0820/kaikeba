@@ -7,7 +7,7 @@
         props:{
             val:{
                 type:String,
-                defaultValue:''
+                default:'111'
             }
         },
         data(){
@@ -16,10 +16,9 @@
             }
         },
         methods:{
-            inputHandle(e){
+            inputHandle(e){ //通知父组件，值的变化
                 this.inputVal=e.target.value;
-                console.log(this.inputVal)
-                //通知父组件，值的变化
+                console.log(this.$emit);
                 this.$emit('value',this.inputVal);
             }
         }

@@ -14,21 +14,21 @@
                  <el-button @click='submitForm'>登录</el-button>
              </el-form-item>
          </el-form>
-         <k-input v-model='somval'></k-input>
-         {{somval}}
+         <kform-item></kform-item>
     </div>
 </template>
 
 <script>
 import KInput from './Input.vue';
-
+import KformItem from './formItem.vue';
 export default {
     components:{
-        KInput
+        KInput,
+        KformItem
     },
     data(){
         return {
-            somval:'hhh',
+            somval:'111',
             runForm:{
                 name:'',
                 pwd:''

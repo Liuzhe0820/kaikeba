@@ -1,5 +1,17 @@
 <template>
   <div id="app">
+    <win>
+      <template slot='head'>
+        head
+      </template>
+      <template slot='content'>
+        content
+      </template>
+      <template slot='foot'>
+        foot
+      </template>
+    </win>
+
     <form-test></form-test>
     <btn @lalala='lalalaClick'></btn>
     <div>
@@ -14,6 +26,8 @@
     <div>
       <cart :name='name'></cart>
     </div>
+    <k-input v-model="somval"></k-input>
+         {{somval}}
   </div>
 </template>
 
@@ -23,17 +37,22 @@ import Cart from "./components/Cart.vue";
 import axios from "axios";
 import FormTest from './components/FormTest.vue';
 import Btn from './components/Btn.vue';
+import KInput from './components/Input.vue';
+import Win from './components/Win.vue';
 export default {
   name: "app",
   components: {
     Cart,
     FormTest,
-    Btn
+    Btn,
+    KInput,
+    Win
   },
   data() {
     return {
       name: "开课吧购物车",
-      goodsList: []
+      goodsList: [],
+      somval:'111'
     };
   },
   async created() {
