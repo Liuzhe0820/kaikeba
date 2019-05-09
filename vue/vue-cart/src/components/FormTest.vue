@@ -13,8 +13,10 @@
               <el-form-item >
                  <el-button @click='submitForm'>登录</el-button>
              </el-form-item>
+              <k-input v-model='somval'></k-input>
+         {{somval}}
          </el-form>
-         <kform-item></kform-item>
+        
     </div>
 </template>
 
