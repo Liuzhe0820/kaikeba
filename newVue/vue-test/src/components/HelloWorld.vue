@@ -9,46 +9,47 @@
       </li>
     </ul>
     <div>
-        <cart ref='cart'></cart>
+        <cart ref='cart' @addCartSuccess='addCartSuccess'></cart>
     </div>
   </div>
 </template>
 
 <script>
-import Cart from './Cart.vue';
+import Cart from "./Cart.vue";
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
   components: {
-    Cart,
+    Cart
   },
-  data(){
+  data() {
     return {
-      title:"购物车",
-      goods:[
+      title: "购物车",
+      goods: [
         {
-          id:1,
-          text:'商品1',
-          pic:9999
+          id: 1,
+          text: "商品1",
+          pic: 9999
         },
         {
-          id:2,
-          text:'商品2',
-          pic:19999
+          id: 2,
+          text: "商品2",
+          pic: 19999
         }
       ],
-      cart:[]
-    }
+      cart: []
+    };
   },
-  created(){
-
-  },
+  created() {},
   methods: {
-    addCart(goods){
-    //  this.$refs.cart.addCart(goods)
-    this.$bus.$emit('addCart',goods);
-  },
-}
-}
+    addCart(goods) {
+      //  this.$refs.cart.addCart(goods)
+      this.$bus.$emit("addCart", goods);
+    },
+    addCartSuccess(){
+      console.log('1');
+    }
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
