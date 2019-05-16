@@ -3,18 +3,20 @@
    
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <form-test></form-test>
+    <!-- <new-form></new-form> -->
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
 import formTest from './components/formTest.vue';
-
+import newForm from './components/newForm.vue';
 export default {
   name: 'app',
   components: {
     HelloWorld,
-    formTest
+    formTest,
+    newForm
   }
 }
 </script>

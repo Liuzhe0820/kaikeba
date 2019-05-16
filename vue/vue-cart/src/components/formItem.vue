@@ -2,6 +2,7 @@
     <div>
         <label v-if='label'>{{label}}</label>
         <div>
+            <!-- 插槽 -->
             <slot></slot>
             <p class='error' v-if="validateStatus=='error'">{{errorMessage}}</p>
         </div>

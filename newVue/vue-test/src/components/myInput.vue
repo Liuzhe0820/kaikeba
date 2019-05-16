@@ -12,15 +12,16 @@
                 default:'text'
             },
             value:{
-            type:String,
-            default:''
+                type:String,
+                default:''
             }
         },
         methods: {
             onInput(e) {
                 //通知父组件，发生了input事件
                 this.$emit('input',e.target.value);
-                
+                //通知父组件校验
+                this.$parent.$emit('validate')
             }
         },
     }

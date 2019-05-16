@@ -72,7 +72,6 @@ export default {
             deep:true,
             handler:function(newVal,oldVal){
                 localStorage.setItem('cart',JSON.stringify(newVal));
-                console.log(oldVal);
             }
         }
     }
