@@ -1,25 +1,13 @@
 <template>
   <div id="app">
-   
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <form-test></form-test>
-    <!-- <new-form></new-form> -->
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> |
+      <router-link to="/mylogin">login</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
-
-<script>
-import HelloWorld from './components/HelloWorld.vue';
-import formTest from './components/formTest.vue';
-import newForm from './components/newForm.vue';
-export default {
-  name: 'app',
-  components: {
-    HelloWorld,
-    formTest,
-    newForm
-  }
-}
-</script>
 
 <style>
 #app {
