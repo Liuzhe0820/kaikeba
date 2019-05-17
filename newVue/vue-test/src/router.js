@@ -2,7 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 import mylogin from './views/mylogin.vue';
-
+import List from './views/List.vue';
+import Detail from './views/Detail.vue';
 Vue.use(Router)
 
 export default new Router({
@@ -12,7 +13,11 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      children:[
+        {path:'',component:List},
+        {path:'/detail/:id',component:Detail}
+      ]
     },
     {
       path: '/mylogin',
