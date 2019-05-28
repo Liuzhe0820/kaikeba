@@ -6,6 +6,7 @@
         :key="index"
         :index='index'
         :todo='todos'
+        :removeItem='removeItem'
       />
     </ul>
   </div>
@@ -16,7 +17,8 @@
   export default {
     name:'item',
     props:{
-      lists:Array
+      lists:Array,
+      removeItem:Function
     },
     components:{
       Item

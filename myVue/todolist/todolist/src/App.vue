@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Head />
-    <List :lists='lists' />
-    <Foot />
+    <Head :addTodos='addTodos' />
+    <List :lists='lists' :removeItem='removeItem' />
+    <Foot :lists='lists' :setSelectAll='setSelectAll' :removeAll='removeAll'/>
   </div>
 </template>
 
@@ -25,6 +25,26 @@ export default {
         {text:'睡觉',isComplete:false},
         {text:'学习',isComplete:true}
       ]
+    }
+  },
+  methods:{
+    removeItem(index){
+      this.lists.splice(index,1)
+    },
+    addTodos(item){
+      this.lists.unshift(item)
+    },
+    setSelectAll(val){
+      this.lists.forEach((item)=>{
+        item.isComplete = val
+      })
+    },
+    removeAll(){
+      this.lists.forEach((item,index)=>{
+          if(item.isComplete){
+            this.lists.splice(index,1)
+          }
+      })
     }
   }
 }

@@ -1,18 +1,42 @@
 <template>
   <div class='foot'>
     <div>
-      <input type="checkbox">
-      <span>已完成0件/总计0件</span>
+      <input type="checkbox" v-model='isChencked' />
+      <span>已完成{{compleateCount}}件/总计{{lists.length}}件</span>
     </div>
     <div>
-      <button>清除已完成</button>
+      <button @click='removeAll'>清除已完成</button>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-
+    name:'Foot',
+    props:{
+      lists:Array,
+      setSelectAll:Function,
+      removeAll:Function
+    },
+    computed:{
+      compleateCount(){
+        return this.lists.reduce((total,item)=>{
+          if(item.isComplete){
+            return total+1
+          }else{
+            return total
+          }
+        },0);
+      },
+      isChencked:{
+        get(){
+          return this.compleateCount === this.lists.length &&this.lists.length>0
+        },
+        set(val){
+          this.setSelectAll(val)
+        }
+      }
+    }
   }
 </script>
 

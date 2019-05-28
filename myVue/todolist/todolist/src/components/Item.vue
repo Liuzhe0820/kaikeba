@@ -8,7 +8,7 @@
           <input type="checkbox" v-model="todo.isComplete"/>
           <span>{{todo.text}}</span>
         </label>
-        <button v-show="isShowDelBtn">删除</button>
+        <button v-show="isShowDelBtn" @click = 'delItem()'>删除</button>
       </li>
 </template>
 
@@ -17,7 +17,8 @@
     name:'item',
     props:{
       todo:Object,
-      index:Number
+      index:Number,
+      removeItem:Function
     },
     data(){
       return {
@@ -29,6 +30,11 @@
       itemIsCur(flag){
         this.isShowDelBtn=flag;
         this.itemBgColor=flag? 'red':'#fff';
+      },
+      delItem(){
+        if(window.confirm(`确定删除${this.todo.text}吗？`)){
+          this.removeItem(this.index);
+        }
       }
     }
   }
