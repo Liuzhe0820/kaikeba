@@ -28,7 +28,8 @@
           return
         }
         const todo = {text:title,isComplete:false};
-        this.addTodos(todo);
+        // this.addTodos(todo);
+        this.$store.dispatch('addTodos',todo);
         this.title = '';
       }
     }

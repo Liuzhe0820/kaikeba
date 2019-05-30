@@ -2,11 +2,11 @@
   <div>
     <ul>
       <Item
-        v-for="(todos,index) in lists"
+        v-for="(todos,index) in $store.state.lists"
         :key="index"
         :index='index'
         :todo='todos'
-        :removeItem='removeItem'
+
       />
     </ul>
   </div>
@@ -16,10 +16,6 @@
  import Item from './Item.vue';
   export default {
     name:'item',
-    props:{
-      lists:Array,
-      removeItem:Function
-    },
     components:{
       Item
     }

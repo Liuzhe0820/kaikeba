@@ -2,7 +2,7 @@
   <div class='foot'>
     <div>
       <input type="checkbox" v-model='isChencked' />
-      <span>已完成{{compleateCount}}件/总计{{lists.length}}件</span>
+      <span>已完成{{compleateCount}}件/总计{{totalCount}}件</span>
     </div>
     <div>
       <button @click='removeAll'>清除已完成</button>
@@ -11,30 +11,25 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
   export default {
     name:'Foot',
-    props:{
-      lists:Array,
-      setSelectAll:Function,
-      removeAll:Function
-    },
+
     computed:{
-      compleateCount(){
-        return this.lists.reduce((total,item)=>{
-          if(item.isComplete){
-            return total+1
-          }else{
-            return total
-          }
-        },0);
-      },
+      ...mapGetters(['compleateCount','totalCount']),
+
       isChencked:{
         get(){
-          return this.compleateCount === this.lists.length &&this.lists.length>0
+          return this.$store.getters.isCheckedAll
         },
         set(val){
-          this.setSelectAll(val)
+          this.$store.dispatch('setSelectAll',val)
         }
+      }
+    },
+    methods:{
+      removeAll(){
+        this.$store.dispatch("removeAll")
       }
     }
   }

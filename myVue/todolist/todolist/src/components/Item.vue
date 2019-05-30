@@ -33,7 +33,7 @@
       },
       delItem(){
         if(window.confirm(`确定删除${this.todo.text}吗？`)){
-          this.removeItem(this.index);
+          this.$store.dispatch('removeTodos',this.index)
         }
       }
     }
