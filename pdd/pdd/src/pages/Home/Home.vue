@@ -7,6 +7,7 @@
     >
 
     </ly-tab>
+    <router-view></router-view>
   </div>
 </template>
 
