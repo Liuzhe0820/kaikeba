@@ -12,23 +12,23 @@ export default new Router({
   routes: [
     {
       path:'/home',
-      Component:Home
+      component:Home
     },
     {
       path:'/recommend',
-      Component:Recommend
+      component:Recommend
     },
     {
       path:'/serach',
-      Component:Search
+      component:Search
     },
     {
       path:'/chat',
-      Component:Chat
+      component:Chat
     },
     {
       path:'/me',
-      Component:Me
+      component:Me
     },
     {
       path:'/',
