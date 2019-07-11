@@ -7,7 +7,7 @@ import Chat from '../pages/Chat/Chat';
 import Me from '../pages/Me/Me';
 
 //二级路由
-import Hot from './../pages/Home/Children/Hot.vue'
+import Hot from './../pages/Home/Children/Hot/Hot.vue'
 import Box from './../pages/Home/Children/Box.vue'
 import Dress from './../pages/Home/Children/Dress.vue'
 import Ele from './../pages/Home/Children/Ele.vue'
@@ -24,16 +24,27 @@ export default new Router({
     {
       path:'/home',
       component:Home,
-      children:[
-        {path:'hot',component:Hot},
-        {path:'box',component:Box},
-        {path:'dress',component:Dress},
-        {path:'ele',component:Ele},
-        {path:'general',component:General},
-        {path:'food',component:Food},
-        {path:'man',component:Man},
-        {path:'mbaby',component:Mbaby},
-        {path:'shirt',component:Shirt},
+      children: [
+        // 热门版块
+        {path: 'hot', component: Hot},
+        // 服饰版块
+        {path: 'dress', component: Dress},
+        // 鞋包版块
+        {path: 'box', component: Box},
+        // 母婴版块
+        {path: 'mbaby', component: Mbaby},
+        // 百货版块
+        {path: 'general', component: General},
+        // 食品版块
+        {path: 'food', component: Food},
+        // 内衣版块
+        {path: 'shirt', component: Shirt},
+        // 男装版块
+        {path: 'man', component: Man},
+        // 电器版块
+        {path: 'ele', component: Ele},
+
+        {path: '/home',redirect: '/home/hot'}
       ]
     },
     {

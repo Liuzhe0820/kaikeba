@@ -2,24 +2,24 @@
   <div class='bottomTabBar'>
     <ul class='bottomTabBarList'>
       <li @click='swichTo("/home")'>
-        <div><img :src="'/home'===$route.path?imgData[0].select:imgData[0].nomore" alt=""></div>
-        <span :class='{on:"/home"===$route.path}'>首页</span>
+        <div><img :src="$route.path.includes('/home')?imgData[0].select:imgData[0].nomore" alt=""></div>
+        <span :class='{on:$route.path.includes("/home")}'>首页</span>
       </li>
       <li @click='swichTo("/recommend")'>
-        <div><img :src="'/recommend'===$route.path?imgData[1].select:imgData[1].nomore" alt=""></div>
-        <span :class='{on:"/recommend"===$route.path}'>推荐</span>
+        <div><img :src="$route.path.includes('/recommend')?imgData[1].select:imgData[1].nomore" alt=""></div>
+        <span :class='{on:$route.path.includes("/recommend")}'>推荐</span>
       </li>
       <li @click='swichTo("/serach")'>
-        <div><img :src="'/serach'===$route.path?imgData[2].select:imgData[2].nomore" alt=""></div>
-        <span :class='{on:"/serach"===$route.path}'>搜索</span>
+        <div><img :src="$route.path.includes('/serach')?imgData[2].select:imgData[2].nomore" alt=""></div>
+        <span :class='{on:$route.path.includes("/serach")}'>搜索</span>
       </li>
      <li @click='swichTo("/chat")'>
-        <div><img :src="'/chat'===$route.path?imgData[3].select:imgData[3].nomore" alt=""></div>
-        <span :class='{on:"/chat"===$route.path}'>聊天</span>
+        <div><img :src="$route.path.includes('/chat')?imgData[3].select:imgData[3].nomore" alt=""></div>
+        <span :class='{on:$route.path.includes("/chat")}'>聊天</span>
       </li>
       <li @click='swichTo("/me")'>
-        <div><img :src="'/me'===$route.path?imgData[4].select:imgData[4].nomore" alt=""></div>
-        <span :class='{on:"/me"===$route.path}'>我的</span>
+        <div><img :src="$route.path.includes('/me')?imgData[4].select:imgData[4].nomore" alt=""></div>
+        <span :class='{on:$route.path.includes("/me")}'>我的</span>
       </li>
     </ul>
   </div>

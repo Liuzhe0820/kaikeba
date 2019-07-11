@@ -4,6 +4,8 @@
       v-model = 'selectedId'
       :items='items'
       :options='options'
+      @change='handleChange'
+      class='fix'
     >
 
     </ly-tab>
@@ -32,11 +34,32 @@ export default Vue.extend({
       ],
       options:{
         activeColor: '#e9232c'
-      }
+      },
+      subRouterUrl:[
+        '/home/hot',
+        '/home/dress',
+        '/home/box',
+        '/home/mbaby',
+        '/home/general',
+        '/home/food',
+        '/home/shirt',
+        '/home/man',
+        '/home/ele',
+      ]
     };
+  },
+  methods:{
+    handleChange(item,index){
+      this.$router.replace(this.subRouterUrl[index]);
+    }
   }
 });
 </script>
 
 <style  lang='stylus' ref='stylesheet/stylus'>
+.fix{
+  position:fixed;
+  top:0;
+  left:0;
+}
 </style>
