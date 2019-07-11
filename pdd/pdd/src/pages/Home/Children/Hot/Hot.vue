@@ -10,6 +10,10 @@
           <div class="swiper-pagination"></div>
       </div>
       <hot-nav></hot-nav>
+      <div class='hot-ad'>
+        <img src="./../images/hot_ad/home_ad.gif" alt="">
+      </div>
+      <hot-shop-list></hot-shop-list>
     </div>
 </template>
 
@@ -18,10 +22,12 @@ import Swiper from "swiper";
 import "swiper/dist/css/swiper.min.css";
 
 import HotNav from './HotNav';
+import HotShopList from './HotShopList';
 export default {
   name: "Hot",
   components:{
-    HotNav
+    HotNav,
+    HotShopList
   },
   mounted() {
     var mySwiper = new Swiper(".swiper-container", {
@@ -46,5 +52,13 @@ export default {
 }
 .swiper-slide img{
   width:100%;
+}
+.hot-ad{
+  margin:8px 0;
+  background-color:#fff;
+  padding:15px;
+  img{
+    width:100%;
+  }
 }
 </style>

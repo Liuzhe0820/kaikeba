@@ -68,7 +68,7 @@
         </a>
       </div>
       <div class='hot-nav-bottom'>
-        <div class='hot-nav-bottom-inner'></div>
+        <div class='hot-nav-bottom-inner' :style='innerBarStyle'></div>
       </div>
     </div>
   </div>
@@ -95,6 +95,51 @@ export default {
       // 7. 移动的距离
       barMoveWidth: 0
     };
+  },
+  computed: {
+    innerBarStyle() {
+      return {
+        width: `${this.barXWidth}px`,
+        left: `${this.barMoveWidth}px`
+      };
+    }
+  },
+  methods: {
+    getBottomBarW() {
+      this.barXWidth = this.bgBarW * (this.screenW / this.scrollContentW);
+    },
+    bindEvent() {
+      this.$el.addEventListener("touchstart", this.handleTouchStart, false);
+      this.$el.addEventListener("touchmove", this.handleTouchMove, false);
+      this.$el.addEventListener("touchend", this.handleTouchEnd, false);
+    },
+    handleTouchStart() {
+       // 1. 获取第一个触点
+        let touch = event.touches[0];
+         // 2.求出起始点
+        this.startX = Number(touch.pageX);
+    },
+    handleTouchMove() {
+      let touch = event.touches[0];
+        // 2. 求出移动的距离
+        let moveWidth = Number(touch.pageX) - this.startX;
+        // 3. 求出滚动条走的距离
+        this.barMoveWidth = -((this.bgBarW / this.scrollContentW) * moveWidth - this.endFlag);
+
+        // 4. 边界值处理
+        if(this.barMoveWidth <= 0){ // 左边
+          this.barMoveWidth = 0;
+        }else if(this.barMoveWidth >= this.bgBarW - this.barXWidth){ // 右边
+          this.barMoveWidth = this.bgBarW - this.barXWidth;
+        }
+    },
+    handleTouchEnd() {
+     this.endFlag = this.barMoveWidth;
+    }
+  },
+  mounted() {
+    this.getBottomBarW();
+    this.bindEvent();
   }
 };
 </script>
