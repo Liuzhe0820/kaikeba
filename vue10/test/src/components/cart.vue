@@ -1,6 +1,6 @@
 <template>
     <div>
-        <table>
+        <table border='1'>
             <thead>
                 <tr>
                     <th></th>
@@ -22,6 +22,12 @@
                     <td>{{item.pric*item.num}}</td>
                 </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">总计：</td>
+                    <td>{{total}}</td>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </template>
@@ -32,11 +38,21 @@ export default {
   name: "cart",
   data() {
     return {
-      cart: []
+      cart:JSON.parse(localStorage.getItem('cart'))|| []
     };
   },
   created(){
       this.$bus.$on('addGoods',(item)=>{this.addCart(item)})
+  },
+  computed:{
+      total(){
+          return this.cart.reduce((sum,c)=>{
+              if(c.active){
+                  sum+=c.num*c.pric
+              }
+              return sum
+          },0)
+      }
   },
   methods: {
     addCart(item) {
@@ -50,6 +66,14 @@ export default {
       }
       this.$emit('addcart');
     }
+  },
+  watch:{
+      cart:{
+          deep:true,
+          handler(newValue){
+              localStorage.setItem('cart',JSON.stringify(newValue))
+          }
+      }
   }
 };
 </script>
