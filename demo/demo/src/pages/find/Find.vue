@@ -14,13 +14,11 @@ import HTTP from '../../api/http';
         },
         methods:{
             getList(){
-                var API ='/api'+HTTP.API_URL.FINDINDEX;
+                var API =HTTP.HOST+HTTP.API_URL.FINDINDEX;
                 console.log(API)
                  this.axios.post(API,this.qs.stringify({num:  1}),{
                 headers: {
-                    'Content-Type': 'multipart/form-data' ,
-                    Accept: "application/json; charset=utf-8",
-                    Authorization:'eyJ1aWQiOjMsInNpZ24iOiI3YWUzNTAwY2E3OWE5ZTE3MzllMzJmNTFkNjc2NGM1YSIsInRpbWVzdGFtcCI6MTU2MjkyMDMzN30='
+                   Authorization:'eyJ1aWQiOjMsInNpZ24iOiI3YWUzNTAwY2E3OWE5ZTE3MzllMzJmNTFkNjc2NGM1YSIsInRpbWVzdGFtcCI6MTU2MjkyMDMzN30='
                 }
                 }).then(function(res){
                     console.log(res.data)

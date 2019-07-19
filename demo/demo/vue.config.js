@@ -1,4 +1,5 @@
 module.exports = {
+    publicPath: './',
     devServer: {
         proxy: {
             '/api': {
@@ -9,6 +10,6 @@ module.exports = {
                     '^/api': ''
                 }
             },
-        }
+        },
     }
 }

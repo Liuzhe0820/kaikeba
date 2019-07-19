@@ -1,4 +1,5 @@
 var Http = {
+	// HOST:'./api',
 	HOST:'https://abundant.xjkrfx.net',//填写服务端域名
 	API_URL:{ 
 		'LOGIN':'/api/m1/auth/login', 
