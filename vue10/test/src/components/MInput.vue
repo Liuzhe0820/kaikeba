@@ -11,14 +11,16 @@
                 type:String,
                 default:'text'
             },
-             type:{
+             value:{
                 type:String,
                 default:''
             }
         },
         methods:{
             onInput(e){
-                this.$emit('input',e.target.value)
+                this.$emit('input',e.target.value);
+                //通知formItem校验
+                this.$parent.$emit('validate');
             }
         }
     }

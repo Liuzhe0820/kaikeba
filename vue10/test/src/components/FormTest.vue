@@ -13,16 +13,28 @@
             </el-form-item>
         </el-form>
         <h3>自己的表单</h3>
-        <MInput :value='model.username' @input='model.username=$event'></MInput>
+        <m-form :model='model' :rules='rules' ref='myForm'>
+            <MFormItem label='用户名' prop='username'>
+                <MInput :value='model.username' @input='model.username=$event'></MInput>
+            </MFormItem>
+            <MFormItem label='密码' prop='password'>
+                <MInput type='password' :value='model.password' @input='model.password=$event'></MInput>
+            </MFormItem>
+            <MFormItem >
+            <el-button type='primary' @click='submitForm("myForm")'>提交</el-button>
+            </MFormItem>
+        </m-form>
     </div>
 </template>
 
 <script>
 import MInput from './MInput';
+import MFormItem from './MFormItem';
+import MForm from './MForm';
     export default {
         name:'FormTest',
         components:{
-            MInput
+            MInput,MFormItem,MForm
         },
         data(){
             return {
