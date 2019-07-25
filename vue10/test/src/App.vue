@@ -1,23 +1,13 @@
 <template>
   <div id="app">
-    
-      <el-button>el-button</el-button>
-    
-    <shop></shop>
-    <FormTest></FormTest>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>|
+      <router-link to="/login">Login</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
-
-<script>
-import Shop from './components/Shop'
-import FormTest from './components/FormTest'
-export default {
-  name: 'app',
-  components: {
-    Shop,FormTest
-  }
-}
-</script>
 
 <style>
 
