@@ -12,7 +12,7 @@
                 <el-button type='primary' @click='submitForm("loginForm")'>提交</el-button>
             </el-form-item>
         </el-form>
-        <h3>自己的表单</h3>
+        <h3>自己的表单</h3>1
         <m-form :model='model' :rules='rules' ref='myForm'>
             <MFormItem label='用户名' prop='username'>
                 <MInput :value='model.username' @input='model.username=$event'></MInput>
