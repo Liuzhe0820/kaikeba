@@ -2,9 +2,11 @@
     <div>
          <ul>
             <li v-for='item in lists' :key='item.id'>
+              <router-link :to='`/detail/${item.id}`'>
                 <span>{{item.text}}</span>
                 <strong>￥{{item.pric}}</strong>
-                <button @click='addCart(item)' @addcart='addcartSuccess'>加入购物车</button>
+                <button @click.prevent.stop='addCart(item)' @addcart='addcartSuccess'>加入购物车</button>
+              </router-link>
             </li>
         </ul>
     </div>
@@ -33,7 +35,7 @@ export default {
           this.$bus.$emit('addGoods',item)
       },
       addcartSuccess(){
-          console.log(1)
+         
       }
   }
 };
