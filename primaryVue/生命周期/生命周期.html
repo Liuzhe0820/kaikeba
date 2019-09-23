@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <button @click='n++'>{{n}}</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                n:1
+            },
+            //创建阶段
+            beforeCreate() {
+                //初始化阶段
+            },
+            created() {
+                //在实例被创建完成后立即调用，该阶段完成了data中的数据的observer。该阶段可以处理一些异步任务
+            },
+            //挂载阶段
+            beforeMount() {
+                //挂载之前
+            },
+            mounted() {
+                //该阶段执行完了模板解析，以及挂载。同时组件根组件元素被赋给了$el属性。该阶段可以通过dom操作对组件内部元素进行处理
+            },
+            beforeUpdate() {
+                //页面变化前
+                //数据变化页面更新之前可以获取页面更新之前的状态
+                console.log(1)
+            },
+            updated() {
+                //页面变化后
+                //页面更新之后  获取页面最新的状态
+                console.log(2)
+            },
+            beforeDestroy() {
+                //实例销毁之前
+            },
+            deactivated() {
+                //组件销毁
+            },
+            errorCaptured: (err, vm, info) => {
+                //子组件报错执行
+            },
+        })
+    </script>
+</body>
+</html>

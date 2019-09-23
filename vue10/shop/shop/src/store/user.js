@@ -1,15 +1,29 @@
+import us from "@/service/user"
 export default{
     state:{
         isLogin:!!localStorage.getItem('token')
     },
-    mutation:{
+    mutations:{
         setLoginState(state,val){
             state.isLogin = val;
         }
     },
     actions:{
-        login(){
-
+        login({commit},userInfo){
+            return us.login(userInfo).then(({token})=>{
+                if(token){
+                    //登录成功
+                    commit('setLoginState',true);
+                    localStorage.setItem('token',token);
+                    return true
+                }
+                return false
+            })
+        },
+        logout({commit}){
+            localStorage.removeItem('token'); 
+            commit('setLoginState',false);
         }
+
     }
 }
