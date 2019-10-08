@@ -29,10 +29,10 @@ router.post('/register',(req,res)=>{
                 const newUser = new User({
                     name:req.body.name,
                     email:req.body.email,
+                    avatar:avatar,
                     password:req.body.password
                 });
                 bcrypt.genSalt(10, function(err, salt) {
-                    console.log(newUser)
                     bcrypt.hash(newUser.password, salt, function(err, hash) {
                         if(err) throw err;
                                 newUser.password = hash;
@@ -42,6 +42,31 @@ router.post('/register',(req,res)=>{
                     });
                 });
             }
+        })
+});
+/*
+    @route POST api/users/login
+    @desc  token  jwt passport
+    @access public
+*/
+router.post('/login',(req,res)=>{
+    const password = req.body.password;
+    const email = req.body.email;
+    //查询数据库
+    User.findOne({email:email})
+        .then((user)=>{
+            if(!user){
+                return res.status(404).json({email:'用户不存在'})
+            }
+            //密码匹配
+            bcrypt.compare(password,user.password)
+                            .then((isMatch)=>{
+                                if(isMatch){
+                                    res.json({msg:'success'});
+                                }else{
+                                    return res.status(400).json({password:'密码错误'})
+                                }
+                            })
         })
 })
 module.exports = router;
