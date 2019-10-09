@@ -1,6 +1,7 @@
 const express = require('express');//引入
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const passport = require('passport');
 const app = express();//实例化
 
 //引入注册登录接口
@@ -18,9 +19,10 @@ mongoose.connect(db).then(()=>{
 }).catch((error)=>{
     console.log(error)
 })
-app.get('/',(req,res)=>{
-    res.send('hello,world!')
-});
+//passport初始化
+app.use(passport.initialize());
+require('./config/passport')(passport);
+
 //使用router
 app.use('/api/users',users);
 
