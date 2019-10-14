@@ -6,6 +6,8 @@ const app = express();//实例化
 
 //引入注册登录接口
 const users = require('./routes/api/user');
+//引入数据接口
+const profiles = require('./routes/api/profiles');
 //引入 数据库地址
 const db = require('./config/keys').mongoURI;
 
@@ -25,7 +27,7 @@ require('./config/passport')(passport);
 
 //使用router
 app.use('/api/users',users);
-
+app.use('/api/profiles',profiles);
 const port = process.env.PORT || 5000;
 app.listen(port,()=>{
     console.log(`Server running on port ${port}`);
