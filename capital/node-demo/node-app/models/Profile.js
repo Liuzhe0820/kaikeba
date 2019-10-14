@@ -2,29 +2,31 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //创建Schema
-const UserSchema = new Schema({
-    name:{
-        type:String,
-        required:true
-    },
-    email:{
-        type:String,
-        required:true
-    },
-    password:{
-        type:String,
-        required:true
-    },
-    avatar:{
+const ProfileSchema = new Schema({
+    type:{
         type:String
     },
-    identity:{
+    describe:{//描述
+        type:String
+    },
+    income:{//收入
         type:String,
         required:true
+    },
+    expend:{//支出
+        type:String,
+        required:true
+    },
+    cach:{//现金
+        type:String,
+        required:true
+    },
+    remark:{//备注
+        type:String
     },
     date:{
         type:Date,
         default:Date.now
     },
 });
-module.exports = User = mongoose.model('Users',UserSchema);
+module.exports = Profile = mongoose.model('Profile',ProfileSchema);
